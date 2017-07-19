@@ -22,9 +22,12 @@ function init() {
 
     document.addEventListener('mousemove', handleMouseMove, false);
 
-setTimeout(function () {
-    loop();
-},2000);
+    var timer = setInterval(function(){
+        if(loadTest(fokker)){
+            loop();
+            clearInterval(timer);
+        }
+    },100);
 
 }
 
@@ -38,3 +41,12 @@ function handleMouseMove(event) {
     mousePos = {x:tx, y:ty};
 
 }
+
+function loadTest (obj) {
+    if(typeof obj == "undefined"){
+        return false;
+    } else {
+        return true;
+    }
+}
+
