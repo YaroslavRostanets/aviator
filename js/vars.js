@@ -9,3 +9,9 @@ var Colors = {
     brownDark: 0x23190f,
     blue: 0x68c3c0,
 };
+
+var cameraPosition = {
+    positionX: 0,
+    positionY: 200,
+    positionZ: 100,
+};

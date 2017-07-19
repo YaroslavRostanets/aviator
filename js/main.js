@@ -5,6 +5,11 @@ var scene,
     renderer, container;
 
 function init() {
+    var gui = new dat.GUI();
+
+    gui.add(cameraPosition,'positionX').min(0).max(800).step(10);
+    gui.add(cameraPosition,'positionY').min(0).max(800).step(10);
+    gui.add(cameraPosition,'positionZ').min(0).max(800).step(10);
 
 
     createScene();
@@ -13,5 +18,23 @@ function init() {
 
     createSea();
 
+    //createPlane();
+
+    document.addEventListener('mousemove', handleMouseMove, false);
+
+setTimeout(function () {
     loop();
+},2000);
+
+}
+
+var mousePos={x:0, y:0};
+var audio = document.querySelector('audio');
+function handleMouseMove(event) {
+
+    var tx = (-1 + (event.clientX / WIDTH)*2);
+
+    var ty = (1 - (event.clientY / HEIGHT)*2);
+    mousePos = {x:tx, y:ty};
+
 }

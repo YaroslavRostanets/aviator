@@ -7,7 +7,7 @@ function createScene() {
 
     scene = new THREE.Scene();
 
-    scene.fog = new THREE.Fog(0xf7d9aa, 100, 950); //Добавляем туман
+    scene.fog = new THREE.Fog(0x949EC4, 100, 950); //Добавляем туман
 
     // Создадим камеру
     aspectRatio = WIDTH / HEIGHT;
@@ -22,9 +22,11 @@ function createScene() {
     );
 
     // Зададим позицию камере в пространстве
-    camera.position.x = 0;
-    camera.position.z = 200;
-    camera.position.y = 100;
+    camera.position.x = -170;
+    camera.position.z = 0;
+    camera.position.y = 150;
+
+
 
     // Создадим рендер
     renderer = new THREE.WebGLRenderer({
@@ -33,8 +35,14 @@ function createScene() {
         canvas: canvas
     });
 
+    var controls = new THREE.OrbitControls(camera, canvas);
+    controls.maxPolarAngle = Math.PI / 2;
+
     renderer.setSize(WIDTH, HEIGHT);
     renderer.shadowMap.enabled = true;  // рендер теней
+
+    var axisHelper = new THREE.AxisHelper( 500 );
+    //scene.add( axisHelper );
 
 
 
